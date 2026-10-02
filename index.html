@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>三亚大东海 · 节点设计方案 —— 3D 汇报</title>
+<style>
+:root{--ui:'Microsoft YaHei','微软雅黑','PingFang SC','Noto Sans SC','Source Han Sans SC',sans-serif;--pink:#FE5783;--navy:#1F3A5C}
+*{box-sizing:border-box} body{margin:0;font-family:var(--ui);color:#151515;background:#f3f2f0}
+header{position:relative;min-height:62vh;display:flex;align-items:flex-end;padding:5vw 6vw 4vw;color:#fff;
+  background:linear-gradient(180deg,rgba(10,25,40,.05),rgba(10,25,40,.65)),url(assets/slide5-render.jpg) center/cover}
+header .tag{display:inline-block;background:var(--pink);padding:.25rem .7rem;border-radius:.4rem;font-size:.85rem;letter-spacing:.1em}
+h1{font-size:clamp(2rem,4.6vw,3.6rem);margin:.6rem 0 .2rem;letter-spacing:.06em;font-weight:800}
+h1+p{margin:0;font-size:1rem;letter-spacing:.14em;opacity:.9;text-transform:uppercase}
+.go{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.6rem;background:#fff;color:#111;text-decoration:none;font-weight:700;
+  padding:.85rem 1.5rem;border-radius:2rem;box-shadow:.35rem .35rem 0 var(--pink);transition:transform .2s}
+.go:hover{transform:translate(-2px,-2px)}
+main{padding:3vw 6vw 5vw;max-width:1500px;margin:auto}
+h2{font-size:1.35rem;margin:2.2rem 0 1rem;letter-spacing:.06em} h2 small{font-weight:400;color:#777;margin-left:.6rem;font-size:.8rem;letter-spacing:.1em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem}
+.grid a{display:block;text-decoration:none;color:inherit;background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 .3rem 1.2rem rgba(0,0,0,.07);transition:transform .2s,box-shadow .2s}
+.grid a:hover{transform:translateY(-3px);box-shadow:.35rem .35rem 0 var(--pink),0 .5rem 1.5rem rgba(0,0,0,.1)}
+.grid img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.grid div{padding:.8rem 1rem 1rem} .grid b{display:block;font-size:1rem} .grid i{font-style:normal;font-size:.72rem;color:#666;letter-spacing:.04em}
+.grid em{font-style:normal;color:var(--pink);font-weight:800;margin-right:.4rem}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem}
+.box{background:#fff;border-radius:1rem;padding:1.1rem 1.3rem;box-shadow:0 .3rem 1.2rem rgba(0,0,0,.06);border-left:.35rem solid var(--pink);font-size:.92rem;line-height:1.75}
+.box.n{border-left-color:var(--navy)} .box h3{margin:0 0 .4rem;font-size:1rem}
+kbd{display:inline-block;border:1px solid #ccc;border-bottom-width:2px;border-radius:.3rem;padding:0 .35rem;font-size:.8rem;background:#fafafa;font-family:inherit}
+footer{color:#888;font-size:.8rem;text-align:center;padding:2rem}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <span class="tag">节点设计方案 · TL</span>
+    <h1>三亚大东海 · 城市更新</h1>
+    <p>Dadonghai, Sanya — Urban Renewal Node Design</p>
+    <a class="go" href="story.html">进入 3D 演示 <span>→</span></a>
+  </div>
+</header>
+<main>
+  <h2>七个阶段<small>点击任一阶段直接进入</small></h2>
+  <div class="grid" id="grid"></div>
+
+  <h2>操作方式<small>HOW TO USE</small></h2>
+  <div class="cols">
+    <div class="box"><h3>翻页（像 PPT 一样）</h3>
+      鼠标<b>滚轮</b> / 触控板滑动：一次手势翻一页<br>
+      <kbd>→</kbd><kbd>↓</kbd><kbd>空格</kbd><kbd>PgDn</kbd> 下一页，<kbd>←</kbd><kbd>↑</kbd><kbd>PgUp</kbd> 上一页，<kbd>1</kbd>–<kbd>7</kbd> 直达<br>
+      底部 ▲▼ 按钮、右侧圆点（悬停显示标题）</div>
+    <div class="box n"><h3>自由观察 3D 场景</h3>
+      <b>左键拖拽</b> 平移，<b>右键拖拽</b>（或 Ctrl+左键）旋转/俯仰<br>
+      <b>Ctrl + 滚轮</b> 或触控板<b>双指捏合</b> 缩放<br>
+      按 <kbd>M</kbd> 或底部「滚轮：切换阶段」按钮：滚轮改为缩放地图<br>
+      <kbd>R</kbd> / 「复位视角」回到本页镜头</div>
+    <div class="box"><h3>设置（右上角 ☰）</h3>
+      底图切换（离线白模 / OSM 远景 / 高德标准 / 高德卫星 / Esri 卫星），高德自动做 WGS84→GCJ-02 偏移<br>
+      锁定 PPT 视角、轴测/透视切换、与原 PPT 渲染图叠加对比、图层开关<br>
+      把 Rhino 导出的 <b>.glb</b> 拖进页面即可替换同名图层</div>
+  </div>
+  <h2>说明</h2>
+  <div class="box n" style="max-width:none">本页面完全离线可用（双击打开即可，MapLibre / three.js / 白模数据均已打包在文件夹内）；只有远景底图需要联网，国内访问 OpenFreeMap 慢或失败时会自动切换到高德。
+    详细说明、如何替换 Rhino 模型、如何修改每页内容，见 <code>README.md</code>。</div>
+</main>
+<footer>三亚大东海 · 节点设计方案 —— HTML 3D 汇报版</footer>
+<script src="js/steps.js"></script>
+<script>
+document.getElementById('grid').innerHTML = (window.STEPS || []).map((s, i) =>
+  `<a href="story.html#${i + 1}"><img src="assets/thumbs/s${i + 1}.jpg" alt="" loading="lazy"><div><b><em>${String(i + 1).padStart(2, '0')}</em>${s.title}</b><i>${s.en}</i></div></a>`).join('');
+</script>
+</body>
+</html>
